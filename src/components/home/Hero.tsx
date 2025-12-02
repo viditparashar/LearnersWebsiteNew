@@ -5,8 +5,11 @@ import Image from 'next/image';
 import styles from './Hero.module.scss';
 import { Button } from '../ui/Button';
 
+import { VirtualTourModal } from './VirtualTourModal';
+
 export const Hero = () => {
     const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+    const [isVirtualTourOpen, setIsVirtualTourOpen] = React.useState(false);
     const heroImages = [
         '/images/Campus.jpeg',
         '/images/ashika.png'
@@ -49,7 +52,7 @@ export const Hero = () => {
                             <Button href="/connect" variant="primary" size="lg">
                                 Enquire Now
                             </Button>
-                            <Button href="/about" variant="outline" size="lg">
+                            <Button onClick={() => setIsVirtualTourOpen(true)} variant="outline" size="lg">
                                 Virtual Tour
                             </Button>
                         </div>
@@ -101,6 +104,11 @@ export const Hero = () => {
 
             {/* Background decoration */}
             <div className={styles.bgDecoration}></div>
+
+            <VirtualTourModal
+                isOpen={isVirtualTourOpen}
+                onClose={() => setIsVirtualTourOpen(false)}
+            />
         </section>
     );
 };
