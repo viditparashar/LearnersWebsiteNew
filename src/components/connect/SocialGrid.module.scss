@@ -1,0 +1,90 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+    padding: 80px 0;
+    background-color: #F8FAFC;
+}
+
+.container {
+    @include container;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-6;
+
+    @include sm {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: $spacing-8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.iconCircle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $spacing-6;
+    color: #FFFFFF;
+
+    &.facebook {
+        background: linear-gradient(135deg, #1877F2, #0A55C4);
+    }
+
+    &.instagram {
+        background: linear-gradient(135deg, #833AB4, #FD1D1D, #FCAF45);
+    }
+
+    &.twitter {
+        background: linear-gradient(135deg, #1DA1F2, #0C85D0);
+    }
+
+    &.linkedin {
+        background: linear-gradient(135deg, #0A66C2, #004182);
+    }
+}
+
+.text {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: $spacing-6;
+}
+
+.link {
+    color: $primary;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &:hover {
+        gap: 10px;
+    }
+}

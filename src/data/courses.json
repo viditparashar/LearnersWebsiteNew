@@ -1,0 +1,16 @@
+[
+    {
+        "id": "1",
+        "title": "Math Foundation Course",
+        "description": "Strengthen mathematical concepts with our specialized foundation course designed for middle school students.",
+        "gradeLevel": "Middle School",
+        "duration": "6 months"
+    },
+    {
+        "id": "2",
+        "title": "Science Explorers",
+        "description": "Hands-on science experiments and theory for budding scientists.",
+        "gradeLevel": "Primary",
+        "duration": "Year-long"
+    }
+]

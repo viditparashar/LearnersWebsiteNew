@@ -1,0 +1,122 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.toast {
+    position: fixed;
+    bottom: $spacing-4;
+    left: $spacing-4;
+    right: $spacing-4;
+    z-index: 100;
+    animation: slideUp 0.5s ease-out;
+
+    @include md {
+        bottom: auto;
+        left: auto;
+        right: $spacing-4;
+        top: 100px; // Below header
+        width: 320px;
+        animation: slideIn 0.5s ease-out;
+    }
+}
+
+.content {
+    background-color: $card;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    padding: $spacing-4;
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(to bottom, $primary, color-mix(in srgb, $primary, white 30%));
+    }
+}
+
+.imageWrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+}
+
+.studentImage {
+    object-fit: cover;
+}
+
+.text {
+    flex: 1;
+}
+
+.label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $primary;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: $foreground;
+    margin-bottom: 2px;
+}
+
+.grade {
+    font-size: 0.85rem;
+    color: $muted-foreground;
+    margin-bottom: 0;
+}
+
+.closeBtn {
+    color: $muted-foreground;
+    padding: 4px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    align-self: flex-start;
+    margin-top: -4px;
+    margin-right: -4px;
+
+    &:hover {
+        background-color: $secondary;
+        color: $foreground;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}

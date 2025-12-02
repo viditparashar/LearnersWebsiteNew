@@ -1,0 +1,41 @@
+@use '../styles/reset';
+@use '../styles/variables';
+@use '../styles/typography';
+
+:root {
+    --background: #FAFBFD;
+    --foreground: #0F172A;
+    --card: #FFFFFF;
+    --card-foreground: #0F172A;
+    --popover: #FFFFFF;
+    --popover-foreground: #0F172A;
+    --primary: #1E88E5;
+    --primary-foreground: #FFFFFF;
+    --secondary: #F1F5F9;
+    --secondary-foreground: #1E293B;
+    --muted: #64748B;
+    --muted-foreground: #94A3B8;
+    --accent: #1E88E5;
+    --accent-foreground: #FFFFFF;
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
+    --border: #E2E8F0;
+    --input: #E2E8F0;
+    --ring: #1E88E5;
+    --radius: 0.5rem;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #000;
+    color: white;
+    padding: 8px;
+    z-index: 10000;
+    transition: top 0.2s;
+
+    &:focus {
+        top: 0;
+    }
+}

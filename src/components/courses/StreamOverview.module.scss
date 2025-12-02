@@ -1,0 +1,113 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.streams {
+    padding: $spacing-8 0;
+    background-color: $background;
+}
+
+.container {
+    @include container;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 48px;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.content {
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.iconWrapper {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: white;
+
+    &.blue {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+    }
+
+    &.green {
+        background: linear-gradient(135deg, #10b981, #059669);
+    }
+
+    &.yellow {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+    }
+
+    &.red {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+    }
+
+    &.purple {
+        background-color: color-mix(in srgb, #8B5CF6, transparent 90%);
+        color: #8B5CF6;
+    }
+
+    &.grey {
+        background-color: #FFFFFF;
+        color: #4B5563;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    }
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1f2937;
+}
+
+.description {
+    margin-bottom: $spacing-4;
+    flex-grow: 1;
+}
+
+.button {
+    width: 100%;
+}
+
+.gradientCard {
+    background: linear-gradient(135deg, #F3F4F6 0%, #E5E7EB 100%);
+    border: 1px solid #E5E7EB;
+
+    .title {
+        color: #1F2937;
+    }
+
+    .description {
+        color: #4B5563;
+        font-size: 1.1rem;
+    }
+}

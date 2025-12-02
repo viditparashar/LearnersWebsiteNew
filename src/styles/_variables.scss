@@ -1,0 +1,37 @@
+// Colors
+// Colors
+// CSS Variables are now in globals.scss
+
+
+$background: var(--background);
+$foreground: var(--foreground);
+$card: var(--card);
+$card-foreground: var(--card-foreground);
+$primary: var(--primary);
+$primary-foreground: var(--primary-foreground);
+$secondary: var(--secondary);
+$secondary-foreground: var(--secondary-foreground);
+$muted: var(--muted);
+$muted-foreground: var(--muted-foreground);
+$accent: var(--accent);
+$accent-foreground: var(--accent-foreground);
+$destructive: var(--destructive);
+$destructive-foreground: var(--destructive-foreground);
+$border: var(--border);
+$input: var(--input);
+$ring: var(--ring);
+$radius: var(--radius);
+
+// Spacing
+$spacing-1: 8px;
+$spacing-2: 16px;
+$spacing-3: 24px;
+$spacing-4: 32px;
+$spacing-6: 48px;
+$spacing-8: 64px;
+
+// Breakpoints
+$sm: 640px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;

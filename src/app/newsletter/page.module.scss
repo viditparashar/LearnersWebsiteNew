@@ -1,0 +1,17 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    padding-top: 100px; // Account for fixed header
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $background-alt;
+}

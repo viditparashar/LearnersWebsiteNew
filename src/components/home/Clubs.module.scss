@@ -1,0 +1,84 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.clubs {
+    padding: $spacing-8 0;
+    background-color: $background;
+}
+
+.container {
+    @include container;
+}
+
+.header {
+    margin-bottom: $spacing-8;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    color: $foreground;
+    margin-bottom: $spacing-2;
+
+    @include md {
+        font-size: 2.5rem;
+    }
+}
+
+.subtitle {
+    color: $muted;
+    font-size: 1.125rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-4;
+
+    @include md {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.houseCard {
+    padding: $spacing-6;
+    border-radius: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+
+    &.green {
+        background-color: #10B981;
+    }
+
+    &.red {
+        background-color: #EF4444;
+    }
+
+    &.blue {
+        background-color: #1E88E5;
+    }
+
+    &.purple {
+        background-color: #8B5CF6;
+    }
+
+    &.yellow {
+        background-color: #F59E0B;
+    }
+}
+
+.houseName {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: $spacing-2;
+}
+
+.houseDesc {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}

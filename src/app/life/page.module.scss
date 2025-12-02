@@ -1,0 +1,162 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero {
+    padding-top: 120px;
+    padding-bottom: $spacing-8;
+    background-color: $secondary;
+    text-align: center;
+}
+
+.container {
+    @include container;
+}
+
+.title {
+    font-size: 2.5rem;
+    color: $foreground;
+    margin-bottom: $spacing-2;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: $muted;
+}
+
+.section {
+    padding: $spacing-8 0;
+    background-color: $background;
+
+    &.bgLight {
+        background-color: #FFFFFF;
+    }
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    color: $foreground;
+    margin-bottom: $spacing-6;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    gap: $spacing-6;
+
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.facilityCard {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 300px;
+    color: #FFFFFF;
+}
+
+.facilityImage {
+    position: absolute;
+    inset: 0;
+    background-color: $muted;
+    z-index: 0;
+
+    &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    }
+}
+
+.facilityContent {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: $spacing-6;
+}
+
+.facilityTitle {
+    font-size: 1.5rem;
+    margin-bottom: $spacing-2;
+}
+
+.facilityDesc {
+    opacity: 0.9;
+}
+
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+}
+
+.timelineItem {
+    display: flex;
+    gap: $spacing-4;
+    align-items: flex-start;
+}
+
+.timelineDate {
+    min-width: 120px;
+    font-weight: 700;
+    color: $primary;
+}
+
+.timelineContent {
+    h3 {
+        font-size: 1.25rem;
+        margin-bottom: 4px;
+    }
+
+    p {
+        color: $muted-foreground;
+    }
+}
+
+.galleryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-6;
+}
+
+.galleryPreview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: $spacing-4;
+}
+
+.galleryItem {
+    aspect-ratio: 4/3;
+    background-color: $secondary;
+    border-radius: 8px;
+}
+
+.modalGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-4;
+
+    @include md {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.modalImage {
+    aspect-ratio: 1;
+    background-color: $secondary;
+    border-radius: 8px;
+}

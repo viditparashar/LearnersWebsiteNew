@@ -1,0 +1,47 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px; // Header height
+    background-color: $background;
+}
+
+.container {
+    @include container;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: $card;
+    padding: $spacing-8;
+    border-radius: 24px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-4;
+    max-width: 500px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+    font-size: 2rem;
+    color: $foreground;
+}
+
+.message {
+    color: $muted-foreground;
+    line-height: 1.6;
+    margin-bottom: $spacing-4;
+}

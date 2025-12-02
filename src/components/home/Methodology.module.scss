@@ -1,0 +1,172 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.methodology {
+    padding: $spacing-8 0;
+    background-color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+}
+
+.container {
+    @include container;
+    position: relative;
+    z-index: 2;
+}
+
+.header {
+    margin-bottom: $spacing-8;
+    max-width: 600px;
+}
+
+.title {
+    font-size: 2rem;
+    color: $foreground;
+    margin-bottom: $spacing-2;
+
+    @include md {
+        font-size: 2.5rem;
+    }
+}
+
+.subtitle {
+    color: $muted;
+    font-size: 1.125rem;
+}
+
+.quote {
+    font-size: 1rem;
+    color: $muted-foreground;
+    font-style: italic;
+    margin-top: $spacing-4;
+    padding-left: $spacing-4;
+    border-left: 3px solid $primary;
+    line-height: 1.6;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-8;
+
+    @include md {
+        flex-direction: row;
+        align-items: stretch; // Ensures equal height
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-4; // Reduced gap
+    flex: 1;
+
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+        max-width: none; // Remove max-width restriction
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: $spacing-4; // Keep padding moderate
+    border-radius: 16px;
+    background-color: $background;
+    transition: transform 0.3s ease;
+    border: 1px solid transparent; // visual balance
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        border-color: $border;
+    }
+}
+
+.iconWrapper {
+    width: 40px; // Reduced size
+    height: 40px; // Reduced size
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: $spacing-3;
+
+    &.blue {
+        background-color: rgba(#1E88E5, 0.1);
+    }
+
+    &.green {
+        background-color: rgba(#10B981, 0.1);
+    }
+
+    &.yellow {
+        background-color: rgba(#F59E0B, 0.1);
+    }
+
+    &.purple {
+        background-color: rgba(#8B5CF6, 0.1);
+    }
+
+    // Adjust icon size inside via global or specific selector if needed, 
+    // but the Lucide icon size prop handles it in JSX. 
+    // We might want to update the JSX to use smaller icons if 32 is too big for 40px box.
+}
+
+.cardTitle {
+    font-size: 1.1rem; // Reduced font size
+    margin-bottom: $spacing-2;
+    color: $foreground;
+    font-weight: 600;
+}
+
+.cardDesc {
+    font-size: 0.9rem; // Reduced font size
+    color: $muted;
+    line-height: 1.4;
+}
+
+.imageSection {
+    display: none;
+
+    @include md {
+        display: block;
+        width: 40%; // Fixed width proportion
+        position: relative; // Reset from absolute
+        top: auto;
+        right: auto;
+        transform: none;
+        height: auto; // Let flex stretch handle it
+        z-index: 1;
+    }
+}
+
+.imagePlaceholder {
+    width: 100%;
+    height: 100%;
+    min-height: 100%; // Ensure it fills the flex item
+    background-color: #E2E8F0;
+    border-top-left-radius: 160px; // Adjusted radius for smaller size
+    border-bottom-left-radius: 160px;
+    background-image: linear-gradient(135deg, #E2E8F0 0%, #F1F5F9 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 0;
+
+    &.active {
+        opacity: 1;
+        z-index: 1;
+    }
+}
+
+.slideImage {
+    object-fit: cover;
+}

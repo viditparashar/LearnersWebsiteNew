@@ -1,0 +1,58 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+    position: relative;
+    height: 60vh;
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    text-align: center;
+    overflow: hidden;
+}
+
+.imageWrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.bgImage {
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+}
+
+.container {
+    @include container;
+    position: relative;
+    z-index: 2;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: $spacing-4;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+
+    @include md {
+        font-size: 3.5rem;
+    }
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+    @include md {
+        font-size: 1.5rem;
+    }
+}

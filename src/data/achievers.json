@@ -1,0 +1,18 @@
+[
+    {
+        "id": "1",
+        "name": "Ashika Rao",
+        "achievement": "National Level Swimmer",
+        "description": "Secured Gold Medal in 50m Freestyle at the National Aquatic Championship 2024.",
+        "image": "/assets/achievers/ashika.jpg",
+        "color": "blue"
+    },
+    {
+        "id": "2",
+        "name": "Mohit Sinha",
+        "achievement": "Math Olympiad Winner",
+        "description": "Ranked 1st in the International Mathematics Olympiad (IMO) - Regional Level.",
+        "image": "/assets/achievers/mohit.jpg",
+        "color": "green"
+    }
+]

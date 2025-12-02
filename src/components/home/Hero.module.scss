@@ -1,0 +1,295 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+    position: relative;
+    padding-top: 120px; // Account for fixed header
+    padding-bottom: $spacing-8;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #FFFFFF, #F8FAFC);
+
+    @include lg {
+        padding-top: 140px;
+        padding-bottom: 100px;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.container {
+    @include container;
+    position: relative;
+    z-index: 2;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-8;
+
+    @include lg {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: $spacing-8;
+    }
+}
+
+.textContent {
+    max-width: 600px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: color-mix(in srgb, var(--primary), transparent 90%);
+    color: $primary;
+    font-weight: 600;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    margin-bottom: $spacing-3;
+}
+
+.headline {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: $spacing-3;
+    color: $foreground;
+
+    @include md {
+        font-size: 3.5rem;
+    }
+
+    @include lg {
+        font-size: 4rem;
+    }
+}
+
+.highlight {
+    color: $primary;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 30%;
+        background-color: color-mix(in srgb, var(--primary), transparent 90%);
+        z-index: -1;
+        transform: rotate(-2deg);
+    }
+}
+
+.subhead {
+    font-size: 1.125rem;
+    color: $muted;
+    margin-bottom: $spacing-6;
+    max-width: 90%;
+
+    @include md {
+        font-size: 1.25rem;
+    }
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3;
+    margin-bottom: $spacing-8;
+
+    @include sm {
+        flex-direction: row;
+    }
+}
+
+.stats {
+    display: flex;
+    gap: $spacing-6;
+    padding-top: $spacing-4;
+    border-top: 1px solid $border;
+}
+
+.statItem {
+    display: flex;
+    flex-direction: column;
+}
+
+.statValue {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $foreground;
+}
+
+.statLabel {
+    font-size: 0.875rem;
+    color: $muted;
+}
+
+.imageContent {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    @include lg {
+        justify-content: flex-end;
+    }
+}
+
+.imageWrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 4/3;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    @include lg {
+        aspect-ratio: 4/3;
+        max-width: 600px;
+        border-radius: 32px 4px 32px 4px;
+    }
+}
+
+.heroImage {
+    position: absolute !important; // Override Next.js styles if needed, though 'fill' usually handles it
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    z-index: 1;
+
+    &.active {
+        opacity: 1;
+        z-index: 2;
+    }
+}
+
+.placeholderImage {
+    width: 100%;
+    height: 100%;
+    background-color: #E2E8F0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    position: relative;
+}
+
+.imageOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent);
+    z-index: 3; // Ensure it's above the active image
+    pointer-events: none;
+}
+
+.floatingCard {
+    position: absolute;
+    bottom: 20px;
+    left: 0; // Reset left
+    background: white;
+    padding: $spacing-3;
+    border-radius: 16px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    max-width: 200px;
+    animation: float 3s ease-in-out infinite;
+    z-index: 3; // Ensure it's above the image
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    &.expanded {
+        max-width: 260px;
+        padding: $spacing-4;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba($primary, 0.1);
+    }
+
+    @include lg {
+        bottom: 60px; // Move up slightly
+        left: -20px; // Overlap slightly
+    }
+}
+
+.studentDetails {
+    margin-top: $spacing-2;
+    padding-top: $spacing-2;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.studentName {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: $primary;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+.studentAchievement {
+    font-size: 0.8rem;
+    color: $muted-foreground;
+    margin-bottom: 0;
+    line-height: 1.4;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.floatingIcon {
+    font-size: 2rem;
+    background-color: color-mix(in srgb, var(--primary), transparent 90%);
+    padding: 8px;
+    border-radius: 12px;
+}
+
+.floatingTitle {
+    font-weight: 700;
+    font-size: 1rem;
+    color: $foreground;
+    margin-bottom: 0;
+}
+
+.floatingSubtitle {
+    font-size: 0.875rem;
+    color: $muted;
+    margin-bottom: 0;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.bgDecoration {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba($primary, 0.05), transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+}

@@ -1,0 +1,43 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.affiliates {
+    padding: $spacing-8 0;
+    background-color: #FFFFFF;
+}
+
+.container {
+    @include container;
+    text-align: center;
+}
+
+.title {
+    font-size: 1.5rem;
+    color: $muted;
+    margin-bottom: $spacing-8;
+    font-weight: 600;
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: $spacing-8;
+    align-items: center;
+}
+
+.logoWrapper {
+    opacity: 0.6;
+    transition: opacity 0.3s;
+
+    &:hover {
+        opacity: 1;
+    }
+}
+
+.logoText {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: $foreground;
+    // In real implementation, this would be an SVG image
+}

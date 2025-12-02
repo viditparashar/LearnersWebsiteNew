@@ -1,0 +1,257 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+    padding: 180px 0 80px; // Top padding accounts for overlapping hero cards
+    background-color: #F8FAFC;
+
+    @include md {
+        padding-top: 220px;
+    }
+}
+
+.container {
+    @include container;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+
+    @include lg {
+        grid-template-columns: 1.5fr 1fr;
+        gap: 64px;
+    }
+}
+
+// Left Column: Form
+.formColumn {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: $spacing-8;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.formHeader {
+    margin-bottom: $spacing-8;
+}
+
+.formTitle {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: $spacing-2;
+}
+
+.formDesc {
+    color: $muted-foreground;
+}
+
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-6;
+
+    @include md {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.fullWidth {
+    grid-column: 1 / -1;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+}
+
+.label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #334155;
+}
+
+.input,
+.select,
+.textarea {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+    background: #F8FAFC;
+    font-size: 1rem;
+    color: #0F172A;
+    transition: all 0.2s ease;
+
+    &:focus {
+        outline: none;
+        border-color: $primary;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        background: #FFFFFF;
+    }
+}
+
+.textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.submitBtn {
+    background-color: $primary;
+    color: #FFFFFF;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.3s ease;
+    margin-top: $spacing-4;
+    width: 100%;
+
+    @include md {
+        width: auto;
+        align-self: flex-start;
+    }
+
+    &:hover {
+        background-color: #1D4ED8; // Darker blue
+    }
+}
+
+// Right Column: Stacked Cards
+.infoColumn {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+}
+
+.infoCard {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: $spacing-8;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.contactBlock {
+    display: flex;
+    align-items: flex-start;
+    gap: $spacing-4;
+    margin-bottom: $spacing-6;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.iconCircle {
+    width: 48px;
+    height: 48px;
+    background: #EFF6FF;
+    color: $primary;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.blockContent {
+    h4 {
+        font-size: 0.9rem;
+        color: $muted-foreground;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 700;
+    }
+
+    p {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #0F172A;
+    }
+}
+
+.joinCard {
+    background: #0F172A;
+    color: #FFFFFF;
+    border-radius: 20px;
+    padding: $spacing-8;
+    position: relative;
+    overflow: hidden;
+
+    h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: $spacing-2;
+    }
+
+    p {
+        color: #94A3B8;
+        margin-bottom: $spacing-6;
+    }
+
+    .applyBtn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: #FFFFFF;
+        font-weight: 600;
+
+        &:hover {
+            gap: 12px;
+        }
+    }
+}
+
+.brochureCard {
+    background: #F0F9FF; // Light blue
+    border-radius: 20px;
+    padding: $spacing-6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    cursor: pointer;
+    transition: background 0.3s ease;
+
+    &:hover {
+        background: #E0F2FE;
+    }
+}
+
+.brochureInfo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+}
+
+.downloadIcon {
+    width: 40px;
+    height: 40px;
+    background: #FFFFFF;
+    color: #0EA5E9;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.brochureText {
+    h4 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #0F172A;
+    }
+
+    span {
+        font-size: 0.85rem;
+        color: #64748B;
+    }
+}

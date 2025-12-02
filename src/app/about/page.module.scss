@@ -1,0 +1,74 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.container {
+    @include container;
+    padding-left: $spacing-6;
+    padding-right: $spacing-6;
+}
+
+.section {
+    padding: $spacing-8 0;
+    background-color: $background;
+}
+
+.grid {
+    display: grid;
+    gap: $spacing-8;
+
+    @include md {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.missionCard {
+    height: 100%;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+}
+
+.cardContent {
+    padding: $spacing-8;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    color: $foreground;
+    margin-bottom: $spacing-4;
+    font-weight: 700;
+}
+
+.text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: $muted-foreground;
+    max-width: 500px; // Limit width for better readability in center alignment
+}
+
+
+
+.faculty {
+    padding: $spacing-8 0;
+    background-color: $background;
+}

@@ -1,0 +1,353 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.activities {
+    padding: $spacing-8 0;
+    background-color: #FFFFFF;
+}
+
+.container {
+    @include container;
+}
+
+.header {
+    margin-bottom: $spacing-8;
+}
+
+.title {
+    font-size: 2rem;
+    color: $foreground;
+
+    @include md {
+        font-size: 2.5rem;
+    }
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-4;
+
+    @include md {
+        flex-direction: row;
+        height: 500px; // Fixed height for desktop to ensure alignment
+    }
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+    flex: 1;
+
+    @include md {
+        flex: 0 0 300px; // Fixed width for the list on desktop
+    }
+}
+
+.listItem {
+    padding: $spacing-4;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: $muted-foreground;
+    background-color: transparent;
+    text-align: left;
+    border: none;
+
+    &:hover {
+        background-color: rgba($primary, 0.05);
+        color: $primary;
+    }
+
+    &.active {
+        background-color: #FFFFFF;
+        color: $primary;
+        font-weight: 700;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            width: 4px;
+            background-color: $primary;
+            border-radius: 0 4px 4px 0;
+        }
+    }
+}
+
+.displayArea {
+    flex: 1;
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #F3F4F6;
+    display: block; // For Link component
+    text-decoration: none;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    &:hover .overlay {
+        opacity: 0.4;
+    }
+}
+
+.mediaWrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.activityImage,
+.activityVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent 50%);
+    z-index: 1;
+    transition: opacity 0.3s ease;
+}
+
+.content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: $spacing-8;
+    z-index: 2;
+    width: 100%;
+}
+
+.tag {
+    display: inline-block;
+    padding: $spacing-1 $spacing-3;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    border-radius: 9999px;
+    color: #FFFFFF;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: $spacing-2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.cardTitle {
+    color: #FFFFFF;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: $spacing-4;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    max-width: 600px;
+    line-height: 1.6;
+    display: none; // Hidden by default, can be shown if we add descriptions later
+
+    @include md {
+        display: block;
+    }
+}
+
+.enquireButton {
+    margin-top: $spacing-4;
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-2;
+    padding: $spacing-3 $spacing-6;
+    background-color: $primary;
+    color: #FFFFFF;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: color-mix(in srgb, var(--primary), black 10%);
+        transform: translateY(-2px);
+    }
+}
+
+.container {
+    @include container;
+}
+
+.header {
+    margin-bottom: $spacing-8;
+}
+
+.title {
+    font-size: 2rem;
+    color: $foreground;
+
+    @include md {
+        font-size: 2.5rem;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-4;
+    grid-auto-rows: 200px;
+
+    @include sm {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include md {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: 250px 250px;
+    }
+}
+
+.card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.02);
+    }
+}
+
+// Grid Layout for Masonry-like feel
+// 1 2 2 2
+// 3 3 4 5
+
+// Let's try a specific layout based on 5 items
+// Item 1: Large Left
+// Item 2: Top Right Wide
+// Item 3: Bottom Right 1
+// Item 4: Bottom Right 2
+// Item 5: Bottom Right 3 (Wait, 5 items)
+
+// Layout:
+// [ 1 ] [ 2 ]
+// [ 3 ] [ 4 ] [ 5 ] (on mobile/tablet)
+
+// Desktop Layout:
+// [ 1 (2x2) ] [ 2 (2x1) ]
+//             [ 3 ] [ 4 ]
+
+@include md {
+    .card-1 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .card-2 {
+        grid-column: span 2;
+    }
+
+    .card-3 {
+        grid-column: span 1; // Actually we have 5 items.
+        // Let's do:
+        // [1 1] [2 2]
+        // [3 3] [4] [5]
+        grid-column: span 2;
+    }
+
+    .card-4 {
+        grid-column: span 1;
+    }
+
+    .card-5 {
+        grid-column: span 1;
+    }
+
+    .enquireCard {
+        grid-column: span 1;
+    }
+}
+
+.enquireCard {
+    background-color: $primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+        background-color: color-mix(in srgb, var(--primary), black 5%);
+        transform: scale(1.02);
+    }
+}
+
+.enquireContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-2;
+    color: #FFFFFF;
+}
+
+.enquireText {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.arrowIcon {
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.enquireCard:hover .arrowIcon {
+    transform: translateX(5px);
+}
+
+.imageWrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.activityImage {
+    transition: transform 0.5s ease;
+}
+
+.card:hover .activityImage {
+    transform: scale(1.05);
+}
+
+.placeholderImage {
+    width: 100%;
+    height: 100%;
+    background-color: #94A3B8;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent 60%);
+    z-index: 1;
+}
+
+.cardTitle {
+    position: absolute;
+    bottom: $spacing-4;
+    left: $spacing-4;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+    font-weight: 700;
+    z-index: 1;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}

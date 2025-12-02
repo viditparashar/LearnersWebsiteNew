@@ -1,0 +1,96 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+    padding: $spacing-4 0;
+}
+
+.container {
+    @include container;
+}
+
+.card {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+.content {
+    padding: $spacing-6;
+
+    @include md {
+        padding: $spacing-8;
+    }
+}
+
+.title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: $spacing-2;
+    color: $foreground;
+
+    @include md {
+        font-size: 2rem;
+    }
+}
+
+.subtitleBanner {
+    display: inline-block;
+    background-color: $secondary;
+    color: $primary;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: $spacing-2 $spacing-4;
+    border-radius: 20px;
+    margin-bottom: $spacing-4;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: $muted-foreground;
+    margin-bottom: $spacing-6;
+    line-height: 1.6;
+}
+
+.highlight {
+    background-color: color-mix(in srgb, $primary, transparent 90%);
+    border-left: 4px solid $primary;
+    padding: $spacing-4;
+    margin-bottom: $spacing-6;
+    border-radius: 0 $spacing-2 $spacing-2 0;
+
+    p {
+        color: $primary;
+        font-weight: 600;
+        margin: 0;
+    }
+}
+
+.points {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-3;
+
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.point {
+    position: relative;
+    padding-left: $spacing-6;
+    color: $foreground;
+
+    &::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: $primary;
+        font-weight: bold;
+        font-size: 1.2rem;
+        line-height: 1;
+        top: 2px;
+    }
+}

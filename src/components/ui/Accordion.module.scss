@@ -1,0 +1,51 @@
+@use '../../styles/variables' as *;
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+}
+
+.item {
+    border: 1px solid $border;
+    border-radius: $radius;
+    overflow: hidden;
+    background-color: $card;
+    transition: all 0.2s;
+
+    &.open {
+        border-color: $primary;
+    }
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $spacing-3 $spacing-4;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: $foreground;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: $secondary;
+    }
+}
+
+.content {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.innerContent {
+    padding: $spacing-4;
+    border-top: 1px solid $border;
+    color: $muted-foreground;
+    line-height: 1.6;
+}

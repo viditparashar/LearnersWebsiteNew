@@ -1,0 +1,135 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+    padding: 64px 0;
+    background-color: #F8FAFC;
+}
+
+.container {
+    @include container;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: $spacing-4;
+}
+
+.subtitle {
+    color: $muted-foreground;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: $spacing-3;
+    margin-bottom: 48px;
+}
+
+.filterChip {
+    padding: 8px 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: #FFFFFF;
+    color: $muted-foreground;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.02);
+        color: $foreground;
+    }
+
+    &.active {
+        background-color: $primary;
+        color: #FFFFFF;
+        border-color: $primary;
+        box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+    }
+}
+
+.galleryGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-4;
+
+    @include md {
+        grid-template-columns: repeat(3, 1fr);
+        gap: $spacing-6;
+    }
+
+    @include lg {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.galleryItem {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1; // Square images for uniform grid
+    cursor: pointer;
+
+    // Span 2 columns for some items to create interest (optional, requires specific logic or nth-child)
+    // For simplicity, we'll keep it uniform first, or use nth-child for variety
+
+    @include md {
+
+        &:nth-child(1),
+        &:nth-child(8) {
+            grid-column: span 2;
+            aspect-ratio: 2/1;
+        }
+    }
+
+    &:hover {
+        .overlay {
+            opacity: 1;
+        }
+
+        .image {
+            transform: scale(1.1);
+        }
+    }
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.viewButton {
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-size: 0.9rem;
+    font-weight: 600;
+}

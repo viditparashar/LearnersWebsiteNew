@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "name": "Mr. Narayan Murthy",
+        "role": "Founder Infosys",
+        "bio": "Visionary leader and entrepreneur.",
+        "image": "/assets/mentors/narayan-murthy.jpg",
+        "videoTitle": "Narayan Murthy"
+    },
+    {
+        "id": "2",
+        "name": "Dr. Sudha Murthy",
+        "role": "Chairperson Infosys Foundation",
+        "bio": "Author, philanthropist, and engineering teacher.",
+        "image": "/assets/mentors/sudha-murthy.jpg",
+        "videoTitle": "Sudha Murthy"
+    },
+    {
+        "id": "3",
+        "name": "Mr. Nandan Nilekani",
+        "role": "Co-founder Infosys",
+        "bio": "Tech visionary and architect of Aadhaar.",
+        "image": "/assets/mentors/nandan-nilekani.jpg",
+        "videoTitle": "Nandan Nilekani"
+    }
+]

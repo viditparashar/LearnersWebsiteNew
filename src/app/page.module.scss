@@ -1,0 +1,10 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* Removed max-width and padding to allow full-width components */
+}

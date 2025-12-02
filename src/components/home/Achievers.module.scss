@@ -1,0 +1,149 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.achievers {
+    padding: $spacing-8 0;
+    background-color: $background;
+}
+
+.container {
+    @include container;
+}
+
+.header {
+    margin-bottom: $spacing-8;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    color: $foreground;
+    margin-bottom: $spacing-2;
+
+    @include md {
+        font-size: 2.5rem;
+    }
+}
+
+.subtitle {
+    color: $muted;
+    font-size: 1.125rem;
+}
+
+.carouselContainer {
+    width: 100%;
+    overflow: hidden;
+    padding: $spacing-4 0;
+
+    // Mask to fade edges
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.track {
+    display: flex;
+    gap: $spacing-6;
+    width: max-content;
+    animation: scroll 40s linear infinite;
+
+    &:hover {
+        animation-play-state: paused;
+    }
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column-reverse;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    width: 300px; // Fixed width for carousel items
+    flex-shrink: 0;
+
+    @include sm {
+        width: 500px;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &.blue {
+        background-color: rgba(#1E88E5, 0.1);
+
+        .name {
+            color: #1E88E5;
+        }
+    }
+
+    &.green {
+        background-color: rgba(#10B981, 0.1);
+
+        .name {
+            color: #059669;
+        }
+    }
+}
+
+.content {
+    padding: $spacing-6;
+    flex: 1;
+}
+
+.name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.achievement {
+    font-size: 1rem;
+    font-weight: 600;
+    color: $foreground;
+    margin-bottom: $spacing-2;
+    opacity: 0.8;
+}
+
+.description {
+    font-size: 0.95rem;
+    color: $muted;
+    margin-bottom: $spacing-4;
+    line-height: 1.6;
+}
+
+.button {
+    background-color: transparent;
+    border-color: currentColor;
+    color: inherit;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+}
+
+.imageWrapper {
+    width: 100%;
+    height: 250px;
+    position: relative;
+
+    @include sm {
+        width: 40%;
+        height: 100%;
+        min-height: 280px;
+    }
+}
+
+.achieverImage {
+    transition: transform 0.3s ease;
+}
+
+.card:hover .achieverImage {
+    transform: scale(1.05);
+}

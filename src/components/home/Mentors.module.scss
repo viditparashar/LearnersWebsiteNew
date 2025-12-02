@@ -1,0 +1,147 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.mentors {
+    padding: $spacing-8 0;
+    background-color: $background;
+}
+
+.container {
+    @include container;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-8;
+
+    @include sm {
+        justify-content: flex-start;
+        gap: $spacing-4;
+    }
+}
+
+.title {
+    font-size: 1.5rem;
+    color: $foreground;
+    margin-bottom: 0;
+
+    @include md {
+        font-size: 2rem;
+    }
+}
+
+.grid {
+    display: flex;
+    gap: $spacing-8;
+    overflow-x: auto;
+    padding-bottom: $spacing-8; // Space for scrollbar
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+
+    // Hide scrollbar for cleaner look but keep functionality
+    &::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba($primary, 0.2);
+        border-radius: 3px;
+    }
+
+    @include sm {
+        // Reset grid styles if any were inherited, though we are replacing them
+    }
+
+    @include lg {
+        // Reset grid styles
+    }
+}
+
+.mentorWrapper {
+    flex: 0 0 300px; // Fixed width for items
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.imageCircle {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: $spacing-4;
+    background-color: #E2E8F0;
+    position: relative;
+
+    // Decorative background circle
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: color-mix(in srgb, var(--primary), transparent 90%);
+        z-index: 0;
+    }
+}
+
+.mentorImage {
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.info {
+    margin-bottom: $spacing-4;
+}
+
+.name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $foreground;
+    margin-bottom: 4px;
+}
+
+.role {
+    font-size: 0.95rem;
+    color: $muted;
+}
+
+.videoThumbnail {
+    width: 100%;
+    max-width: 250px;
+    aspect-ratio: 16/9;
+    background-color: #1E293B;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:hover .playButton {
+        transform: scale(1.1);
+    }
+}
+
+.playButton {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+    transition: transform 0.2s;
+}
+
+.videoLabel {
+    font-size: 0.75rem;
+    color: #94A3B8;
+}

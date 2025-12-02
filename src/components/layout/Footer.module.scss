@@ -1,0 +1,134 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+    background-color: #0F172A; // Dark footer background
+    color: #F8FAFC;
+    padding-top: $spacing-8;
+    padding-bottom: $spacing-4;
+}
+
+.container {
+    @include container;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-6;
+    margin-bottom: $spacing-8;
+
+    @include md {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+        grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+}
+
+.heading {
+    font-size: 1.5rem;
+    color: $primary; // Use primary color for brand
+    margin-bottom: $spacing-2;
+}
+
+.subheading {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: $spacing-2;
+    color: #FFFFFF;
+}
+
+.text {
+    color: #94A3B8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.socials {
+    display: flex;
+    gap: $spacing-2;
+    margin-top: $spacing-2;
+
+    a {
+        color: #94A3B8;
+        transition: color 0.2s;
+
+        &:hover {
+            color: $primary;
+        }
+    }
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+
+    a {
+        color: #94A3B8;
+        transition: color 0.2s;
+        font-size: 0.95rem;
+
+        &:hover {
+            color: $primary;
+            padding-left: 4px;
+        }
+    }
+}
+
+.contactList {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+
+    li {
+        display: flex;
+        align-items: flex-start;
+        gap: $spacing-2;
+        color: #94A3B8;
+        font-size: 0.95rem;
+
+        svg {
+            flex-shrink: 0;
+            margin-top: 4px;
+            color: $primary;
+        }
+    }
+}
+
+.newsletterForm {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-2;
+}
+
+.input {
+    padding: 0.75rem;
+    border-radius: $radius;
+    border: 1px solid #334155;
+    background-color: #1E293B;
+    color: #FFFFFF;
+    font-family: inherit;
+
+    &:focus {
+        outline: none;
+        border-color: $primary;
+        box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary), transparent 80%);
+    }
+}
+
+.copyright {
+    border-top: 1px solid #334155;
+    padding-top: $spacing-4;
+    text-align: center;
+    color: #64748B;
+    font-size: 0.875rem;
+}

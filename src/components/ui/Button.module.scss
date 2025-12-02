@@ -1,0 +1,74 @@
+@use '../../styles/variables' as *;
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1px solid transparent;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.primary {
+    background-color: $primary;
+    color: $primary-foreground;
+
+    &:hover {
+        filter: brightness(0.9);
+    }
+}
+
+.secondary {
+    background-color: $secondary;
+    color: $secondary-foreground;
+
+    &:hover {
+        filter: brightness(0.9);
+    }
+}
+
+.outline {
+    background-color: transparent;
+    border-color: $primary;
+    color: $primary;
+
+    &:hover {
+        background-color: color-mix(in srgb, var(--primary), transparent 95%);
+    }
+}
+
+.ghost {
+    background-color: transparent;
+    color: $foreground;
+
+    &:hover {
+        background-color: $secondary;
+    }
+}
+
+.sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+.md {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+}
+
+.lg {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+}
+
+.fullWidth {
+    width: 100%;
+}

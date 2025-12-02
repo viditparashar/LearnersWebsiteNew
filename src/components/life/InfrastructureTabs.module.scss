@@ -1,0 +1,215 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.section {
+    padding: 64px 0;
+    background-color: #F8FAFC; // Light background
+}
+
+.container {
+    @include container;
+}
+
+.titleWrapper {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.sectionTitle {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: $spacing-4;
+}
+
+.subtitle {
+    color: $muted-foreground;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-8;
+
+    @include md {
+        flex-direction: row;
+        gap: 48px;
+        align-items: flex-start;
+    }
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: row; // Horizontal on mobile
+    overflow-x: auto;
+    gap: $spacing-4;
+    padding-bottom: $spacing-4;
+    width: 100%;
+
+    @include md {
+        flex-direction: column;
+        width: 300px;
+        flex-shrink: 0;
+        overflow-x: visible;
+        padding-bottom: 0;
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
+        padding-right: $spacing-8;
+    }
+}
+
+.tabButton {
+    padding: $spacing-4 $spacing-6;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $muted-foreground;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    &:hover {
+        color: $primary;
+        background-color: rgba(0, 0, 0, 0.02);
+    }
+
+    &.active {
+        background-color: #FFFFFF;
+        color: $primary;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        font-weight: 700;
+        position: relative;
+
+        @include md {
+            &::after {
+                content: '';
+                position: absolute;
+                right: -($spacing-8 + 1px); // Align with border
+                top: 50%;
+                transform: translateY(-50%);
+                width: 4px;
+                height: 24px;
+                background-color: $primary;
+                border-radius: 4px 0 0 4px;
+            }
+        }
+    }
+}
+
+.displayArea {
+    flex: 1;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: $spacing-2; // Inner padding for frame effect
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+    height: 100%;
+
+    @include lg {
+        flex-direction: row;
+        align-items: stretch; // Stretch to fill height
+    }
+}
+
+.imageContainer {
+    flex: 0 0 45%; // Fixed width for image container (45%)
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 300px; // Ensure minimum height
+
+    @include lg {
+        min-height: auto; // Let flex stretch handle it
+    }
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+}
+
+.info {
+    flex: 1;
+    padding: $spacing-4 $spacing-6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include lg {
+        padding: $spacing-6 $spacing-8;
+    }
+}
+
+.categoryBadge {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: rgba(99, 102, 241, 0.1); // Indigo tint
+    color: #6366F1;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 20px;
+    margin-bottom: $spacing-4;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cardTitle {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1E293B;
+    margin-bottom: $spacing-4;
+    line-height: 1.2;
+}
+
+.description {
+    color: $muted-foreground;
+    line-height: 1.7;
+    margin-bottom: $spacing-6;
+    font-size: 1.05rem;
+}
+
+.featureList {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-3;
+}
+
+.featureItem {
+    display: flex;
+    align-items: center;
+    gap: $spacing-3;
+    color: #334155;
+    font-weight: 500;
+
+    svg {
+        color: #10B981; // Green check
+        flex-shrink: 0;
+    }
+}

@@ -1,0 +1,41 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.curriculumWrapper {
+    background-color: $secondary;
+    padding: $spacing-8 0;
+}
+
+.ctaSection {
+    padding: $spacing-8 0;
+    background-color: $background;
+    text-align: center;
+}
+
+.container {
+    @include container;
+}
+
+.ctaContent {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.ctaTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: $spacing-4;
+    color: $foreground;
+}
+
+.ctaText {
+    font-size: 1.25rem;
+    color: $muted-foreground;
+    margin-bottom: $spacing-6;
+}
